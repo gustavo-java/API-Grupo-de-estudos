@@ -5,3 +5,8 @@ playwright-report/
 .env
 .env.local
 *.log
+
+# Ignore all environment variants; keep the example for new clones
+.env
+.env.*
+!.env.example

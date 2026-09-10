@@ -89,3 +89,27 @@ npm test
 
 Os testes do portal usam uma API em 3100, Vite em 5174 e PGlite em 55432, com
 banco e uploads descartáveis. Não utilizam o banco configurado no `.env`.
+
+
+## Enviar para o GitHub
+
+`API/` e `FrontEnd/` fazem parte do mesmo repositório Git, localizado na raiz.
+Os arquivos de código, `package.json`, `package-lock.json`, migrations e exemplos
+`.env.example` devem ser versionados. Dependências, builds, uploads, resultados
+de testes e arquivos `.env` são ignorados.
+
+Execute os comandos na raiz, onde ficam as duas pastas:
+
+```bash
+git add .gitignore README.md API FrontEnd
+git commit -m "Organiza API e FrontEnd no mesmo repositório"
+git push
+```
+
+Em um clone novo, siga as instruções de instalação acima para criar os arquivos
+`.env`, instalar dependências e gerar o Prisma Client. Os builds e as imagens
+enviadas pelos usuários não são distribuídos pelo Git.
+
+O antigo Git interno de `API/` foi preservado em `.local-backups/`, ignorado pelo
+Git. Ele guarda o histórico anterior da API apenas nesta máquina. Não crie um
+novo `.git` dentro de `API/` ou `FrontEnd/` ao trabalhar neste repositório.

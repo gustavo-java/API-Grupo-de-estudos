@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Secrets: commit only configuration examples
+.env
+.env.*
+!.env.example
+
+# Runtime files and test artifacts
+uploads/
+*.log
+playwright-report/
+test-results/
+
+# Local Git backups and editor/agent integrations
+/.local-backups/
+.agents/
+.codex/
+.claude/
+.cursor/
+.devin/
+.windsurf/
+.idea/
+.DS_Store
+Thumbs.db

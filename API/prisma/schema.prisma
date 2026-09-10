@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  roles    String
+  timeAcc  DateTime @default(now())
+
+  prescriptions Prescription[]
+}
+
+
+model Medicine {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+  imageUrls   String[] @default([])
+
+  prescriptions Prescription[]
+}
+
+
+model Prescription {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  medicineId Int
+  quantity   Int
+  date       DateTime @default(now())
+
+  user     User     @relation(fields: [userId], references: [id])
+  medicine Medicine @relation(fields: [medicineId], references: [id])
+}
